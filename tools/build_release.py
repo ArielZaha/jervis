@@ -203,6 +203,7 @@ def write_search_files(release: dict) -> None:
         "operatingSystem": "macOS, Windows 10, Windows 11", "applicationCategory": "UtilitiesApplication",
         "softwareVersion": release["version"], "fileSize": release["size"],
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "author": [{"@type": "Person", "name": "Ariel"}, {"@type": "Person", "name": "Shalev"}],
     }
     if url:
         data.update({"url": url, "downloadUrl": f"{url}downloads/{release['file']}",

@@ -480,6 +480,8 @@ q { quotes: '“' '”'; }
 .site-footer { padding: 48px 0 56px; border-top: 1px solid var(--line); background: var(--bg-raised); }
 .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; }
 .footer-brand p { margin-top: 12px; color: var(--faint); font-size: 14.5px; }
+.footer-brand .credits { margin-top: 6px; color: var(--muted); }
+.footer-brand .credits strong { color: var(--text); font-weight: 600; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 4px 8px; }
 .footer-links a { display: block; padding: 6px 8px; color: var(--muted); font-size: 14.5px; text-decoration: none; }
 .footer-links a:hover { color: var(--text); }
