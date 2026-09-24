@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arielzaha.github.io/jervis/sitemap.xml

@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jervis: a voice assistant for macOS and Windows</title>
+  <meta name="description" content="Jervis is a voice assistant for macOS and Windows. Say “Hey Jervis” to play music and shows, open apps, write documents, set timers, and solve or graph math." />
+  <link rel="canonical" href="https://arielzaha.github.io/jervis/" />
+  <meta property="og:url" content="https://arielzaha.github.io/jervis/" />
+  <meta name="theme-color" content="#03060d" />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jervis" />
+  <meta property="og:title" content="Jervis: a voice assistant for macOS and Windows" />
+  <meta property="og:description" content="Say “Hey Jervis” to play music and shows, open apps, write documents, set timers, and solve or graph math." />
+  <meta property="og:image" content="https://arielzaha.github.io/jervis/assets/img/og-jervis.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="The Jervis window: the voice core in the middle, system and weather panels on the left, the conversation on the right." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Jervis",
+    "description": "A voice assistant for macOS and Windows that plays media, opens apps, writes documents, sets timers, and solves and graphs math.",
+    "operatingSystem": "macOS, Windows 10, Windows 11",
+    "applicationCategory": "UtilitiesApplication",
+    "softwareVersion": "v43",
+    "fileSize": "6.4 MB",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "url": "https://arielzaha.github.io/jervis/",
+    "downloadUrl": "https://arielzaha.github.io/jervis/downloads/Jervis-v43.zip",
+    "screenshot": "https://arielzaha.github.io/jervis/assets/img/jervis-chat-1600.webp"
+  }
+  </script>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-download-simple" viewBox="0 0 256 256"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></symbol>
+<symbol id="i-microphone" viewBox="0 0 256 256"><path d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z"/></symbol>
+<symbol id="i-timer" viewBox="0 0 256 256"><path d="M128,40a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,40Zm0,176a80,80,0,1,1,80-80A80.09,80.09,0,0,1,128,216ZM173.66,90.34a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32-11.32l40-40A8,8,0,0,1,173.66,90.34ZM96,16a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,16Z"/></symbol>
+<symbol id="i-calendar-blank" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"/></symbol>
+<symbol id="i-chalkboard-teacher" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H53.39a8,8,0,0,0,7.23-4.57,48,48,0,0,1,86.76,0,8,8,0,0,0,7.23,4.57H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM80,144a24,24,0,1,1,24,24A24,24,0,0,1,80,144Zm136,56H159.43a64.39,64.39,0,0,0-28.83-26.16,40,40,0,1,0-53.2,0A64.39,64.39,0,0,0,48.57,200H40V56H216ZM56,96V80a8,8,0,0,1,8-8H192a8,8,0,0,1,8,8v96a8,8,0,0,1-8,8H176a8,8,0,0,1,0-16h8V88H72v8a8,8,0,0,1-16,0Z"/></symbol>
+<symbol id="i-whatsapp-logo" viewBox="0 0 256 256"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></symbol>
+<symbol id="i-keyboard" viewBox="0 0 256 256"><path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,144H32V64H224V192Zm-16-64a8,8,0,0,1-8,8H56a8,8,0,0,1,0-16H200A8,8,0,0,1,208,128Zm0-32a8,8,0,0,1-8,8H56a8,8,0,0,1,0-16H200A8,8,0,0,1,208,96ZM72,160a8,8,0,0,1-8,8H56a8,8,0,0,1,0-16h8A8,8,0,0,1,72,160Zm96,0a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,160Zm40,0a8,8,0,0,1-8,8h-8a8,8,0,0,1,0-16h8A8,8,0,0,1,208,160Z"/></symbol>
+<symbol id="i-user-switch" viewBox="0 0 256 256"><path d="M253.66,133.66l-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L216,132.69V128A88,88,0,0,0,56.49,76.67a8,8,0,0,1-13-9.34A104,104,0,0,1,232,128v4.69l10.34-10.35a8,8,0,0,1,11.32,11.32Zm-41.18,55A104,104,0,0,1,24,128v-4.69L13.66,133.66A8,8,0,0,1,2.34,122.34l24-24a8,8,0,0,1,11.32,0l24,24a8,8,0,0,1-11.32,11.32L40,123.31V128a87.62,87.62,0,0,0,22.24,58.41A79.66,79.66,0,0,1,98.3,157.66a48,48,0,1,1,59.4,0,79.59,79.59,0,0,1,36.08,28.78,89.68,89.68,0,0,0,5.71-7.11,8,8,0,0,1,13,9.34ZM128,152a32,32,0,1,0-32-32A32,32,0,0,0,128,152Zm0,64a88.2,88.2,0,0,0,53.92-18.49,64,64,0,0,0-107.84,0A87.57,87.57,0,0,0,128,216Z"/></symbol>
+<symbol id="i-lock-simple" viewBox="0 0 256 256"><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"/></symbol>
+<symbol id="i-cloud" viewBox="0 0 256 256"><path d="M160,40A88.09,88.09,0,0,0,81.29,88.67,64,64,0,1,0,72,216h88a88,88,0,0,0,0-176Zm0,160H72a48,48,0,0,1,0-96c1.1,0,2.2,0,3.29.11A88,88,0,0,0,72,128a8,8,0,0,0,16,0,72,72,0,1,1,72,72Z"/></symbol>
+<symbol id="i-apple-logo" viewBox="0 0 256 256"><path d="M223.3,169.59a8.07,8.07,0,0,0-2.8-3.4C203.53,154.53,200,134.64,200,120c0-17.67,13.47-33.06,21.5-40.67a8,8,0,0,0,0-11.62C208.82,55.74,187.82,48,168,48a72.2,72.2,0,0,0-40,12.13,71.56,71.56,0,0,0-90.71,9.09A74.63,74.63,0,0,0,16,123.4a127.06,127.06,0,0,0,40.14,89.73A39.8,39.8,0,0,0,83.59,224h87.68a39.84,39.84,0,0,0,29.12-12.57,125,125,0,0,0,17.82-24.6C225.23,174,224.33,172,223.3,169.59Zm-34.63,30.94a23.76,23.76,0,0,1-17.4,7.47H83.59a23.82,23.82,0,0,1-16.44-6.51A111.14,111.14,0,0,1,32,123,58.5,58.5,0,0,1,48.65,80.47,54.81,54.81,0,0,1,88,64h.78A55.45,55.45,0,0,1,123,76.28a8,8,0,0,0,10,0A55.44,55.44,0,0,1,168,64a70.64,70.64,0,0,1,36,10.35c-13,14.52-20,30.47-20,45.65,0,23.77,7.64,42.73,22.18,55.3A105.82,105.82,0,0,1,188.67,200.53ZM128.23,30A40,40,0,0,1,167,0h1a8,8,0,0,1,0,16h-1a24,24,0,0,0-23.24,18,8,8,0,1,1-15.5-4Z"/></symbol>
+<symbol id="i-windows-logo" viewBox="0 0 256 256"><path d="M208,136H128a8,8,0,0,0-8,8v57.45a8,8,0,0,0,6.57,7.88l80,14.54A7.61,7.61,0,0,0,208,224a8,8,0,0,0,8-8V144A8,8,0,0,0,208,136Zm-8,70.41-64-11.63V152h64ZM96,136H32a8,8,0,0,0-8,8v40a8,8,0,0,0,6.57,7.87l64,11.64a8.54,8.54,0,0,0,1.43.13,8,8,0,0,0,8-8V144A8,8,0,0,0,96,136Zm-8,50.05-48-8.73V152H88ZM213.13,33.86a8,8,0,0,0-6.56-1.73l-80,14.55A8,8,0,0,0,120,54.55V112a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V40A8,8,0,0,0,213.13,33.86ZM200,104H136V61.22l64-11.63ZM101.13,54.22a8,8,0,0,0-6.56-1.73l-64,11.64A8,8,0,0,0,24,72v40a8,8,0,0,0,8,8H96a8,8,0,0,0,8-8V60.36A8,8,0,0,0,101.13,54.22ZM88,104H40V78.68L88,70Z"/></symbol>
+<symbol id="i-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
+<symbol id="i-copy" viewBox="0 0 256 256"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+<symbol id="i-caret-down" viewBox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
+<symbol id="i-list" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></symbol>
+<symbol id="i-x" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
+<symbol id="i-ear" viewBox="0 0 256 256"><path d="M216,104a8,8,0,0,1-16,0,72,72,0,0,0-144,0c0,26.7,8.53,34.92,17.57,43.64C82.21,156,92,165.41,92,188a36,36,0,0,0,36,36c10.24,0,18.45-4.16,25.83-13.09a8,8,0,1,1,12.34,10.18C155.81,233.64,143,240,128,240a52.06,52.06,0,0,1-52-52c0-15.79-5.68-21.27-13.54-28.84C52.46,149.5,40,137.5,40,104a88,88,0,0,1,176,0Zm-38.13,57.08A8,8,0,0,0,166.93,164,8,8,0,0,1,152,160c0-9.33,4.82-15.76,10.4-23.2,6.37-8.5,13.6-18.13,13.6-32.8a48,48,0,0,0-96,0,8,8,0,0,0,16,0,32,32,0,0,1,64,0c0,9.33-4.82,15.76-10.4,23.2-6.37,8.5-13.6,18.13-13.6,32.8a24,24,0,0,0,44.78,12A8,8,0,0,0,177.87,161.08Z"/></symbol>
+<symbol id="i-brain" viewBox="0 0 256 256"><path d="M248,124a56.11,56.11,0,0,0-32-50.61V72a48,48,0,0,0-88-26.49A48,48,0,0,0,40,72v1.39a56,56,0,0,0,0,101.2V176a48,48,0,0,0,88,26.49A48,48,0,0,0,216,176v-1.41A56.09,56.09,0,0,0,248,124ZM88,208a32,32,0,0,1-31.81-28.56A55.87,55.87,0,0,0,64,180h8a8,8,0,0,0,0-16H64A40,40,0,0,1,50.67,86.27,8,8,0,0,0,56,78.73V72a32,32,0,0,1,64,0v68.26A47.8,47.8,0,0,0,88,128a8,8,0,0,0,0,16,32,32,0,0,1,0,64Zm104-44h-8a8,8,0,0,0,0,16h8a55.87,55.87,0,0,0,7.81-.56A32,32,0,1,1,168,144a8,8,0,0,0,0-16,47.8,47.8,0,0,0-32,12.26V72a32,32,0,0,1,64,0v6.73a8,8,0,0,0,5.33,7.54A40,40,0,0,1,192,164Zm16-52a8,8,0,0,1-8,8h-4a36,36,0,0,1-36-36V80a8,8,0,0,1,16,0v4a20,20,0,0,0,20,20h4A8,8,0,0,1,208,112ZM60,120H56a8,8,0,0,1,0-16h4A20,20,0,0,0,80,84V80a8,8,0,0,1,16,0v4A36,36,0,0,1,60,120Z"/></symbol>
+<symbol id="i-hand-pointing" viewBox="0 0 256 256"><path d="M196,88a27.86,27.86,0,0,0-13.35,3.39A28,28,0,0,0,144,74.7V44a28,28,0,0,0-56,0v80l-3.82-6.13A28,28,0,0,0,35.73,146l4.67,8.23C74.81,214.89,89.05,240,136,240a88.1,88.1,0,0,0,88-88V116A28,28,0,0,0,196,88Zm12,64a72.08,72.08,0,0,1-72,72c-37.63,0-47.84-18-81.68-77.68l-4.69-8.27,0-.05A12,12,0,0,1,54,121.61a11.88,11.88,0,0,1,6-1.6,12,12,0,0,1,10.41,6,1.76,1.76,0,0,0,.14.23l18.67,30A8,8,0,0,0,104,152V44a12,12,0,0,1,24,0v68a8,8,0,0,0,16,0V100a12,12,0,0,1,24,0v20a8,8,0,0,0,16,0v-4a12,12,0,0,1,24,0Z"/></symbol>
+<symbol id="i-chat-circle-text" viewBox="0 0 256 256"><path d="M168,112a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm-8,24H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm72-8A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"/></symbol>
+<symbol id="i-paper-plane-tilt" viewBox="0 0 256 256"><path d="M227.32,28.68a16,16,0,0,0-15.66-4.08l-.15,0L19.57,82.84a16,16,0,0,0-2.49,29.8L102,154l41.3,84.87A15.86,15.86,0,0,0,157.74,248q.69,0,1.38-.06a15.88,15.88,0,0,0,14-11.51l58.2-191.94c0-.05,0-.1,0-.15A16,16,0,0,0,227.32,28.68ZM157.83,231.85l-.05.14,0-.07-40.06-82.3,48-48a8,8,0,0,0-11.31-11.31l-48,48L24.08,98.25l-.07,0,.14,0L216,40Z"/></symbol>
+<symbol id="i-arrows-out" viewBox="0 0 256 256"><path d="M216,48V96a8,8,0,0,1-16,0V67.31l-42.34,42.35a8,8,0,0,1-11.32-11.32L188.69,56H160a8,8,0,0,1,0-16h48A8,8,0,0,1,216,48ZM98.34,146.34,56,188.69V160a8,8,0,0,0-16,0v48a8,8,0,0,0,8,8H96a8,8,0,0,0,0-16H67.31l42.35-42.34a8,8,0,0,0-11.32-11.32ZM208,152a8,8,0,0,0-8,8v28.69l-42.34-42.35a8,8,0,0,0-11.32,11.32L188.69,200H160a8,8,0,0,0,0,16h48a8,8,0,0,0,8-8V160A8,8,0,0,0,208,152ZM67.31,56H96a8,8,0,0,0,0-16H48a8,8,0,0,0-8,8V96a8,8,0,0,0,16,0V67.31l42.34,42.35a8,8,0,0,0,11.32-11.32Z"/></symbol>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="Jervis, back to top">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <defs><linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fd8ff"/><stop offset="1" stop-color="#a58bff"/></linearGradient></defs>
+        <circle cx="16" cy="16" r="6" fill="url(#brandGrad)"/>
+        <ellipse cx="16" cy="16" rx="14" ry="6" fill="none" stroke="url(#brandGrad)" stroke-width="1.4" transform="rotate(-25 16 16)" opacity=".85"/>
+        <ellipse cx="16" cy="16" rx="14" ry="6" fill="none" stroke="url(#brandGrad)" stroke-width="1.4" transform="rotate(35 16 16)" opacity=".45"/>
+      </svg>
+      <span class="wordmark">Jervis</span>
+    </a>
+    <nav class="site-nav" id="siteNav" aria-label="Main">
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#install">Install</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary btn-sm header-cta" href="downloads/Jervis-v43.zip" download data-download aria-label="Download Jervis">
+      <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download Jervis</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+      <svg class="icon icon-open" aria-hidden="true"><use href="#i-list"/></svg>
+      <svg class="icon icon-close" aria-hidden="true"><use href="#i-x"/></svg>
+      <span class="sr-only">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ============ Hero ============ -->
+  <section class="hero" id="intro" aria-labelledby="heroTitle">
+    <div class="hero-backdrop" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1 id="heroTitle">Run your computer by&nbsp;voice.</h1>
+        <p class="lede">Say “Hey Jervis” and ask for music, shows, timers, documents or graphs. He opens the right app and does it.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="downloads/Jervis-v43.zip" download data-download>
+            <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download Jervis</span>
+          </a>
+          <a class="btn btn-ghost" href="#showcase"><span>See what he can do</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        </div>
+        <p class="hero-meta" id="heroMeta">Free for macOS and Windows 10 or 11. You’ll need Python and a free Groq key.</p>
+      </div>
+      <figure class="hero-core">
+        <div class="core-stage">
+          <canvas id="heroOrb" role="img" aria-label="The Jervis voice core, the animated sphere from the Jervis window."></canvas>
+          <i class="reticle tl" aria-hidden="true"></i><i class="reticle tr" aria-hidden="true"></i><i class="reticle bl" aria-hidden="true"></i><i class="reticle br" aria-hidden="true"></i>
+        </div>
+        <figcaption class="core-caption">
+          <span class="core-state" id="coreState">Ready</span>
+          <span class="core-sub" id="coreSub">Say “Hey Jervis”.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ Product showcase ============ -->
+  <section class="section showcase" id="showcase" aria-labelledby="showcaseTitle">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="showcaseTitle">He answers out loud, and shows his work.</h2>
+        <p>Replies appear in the Jervis window as he speaks: the conversation, worked math, graphs and a 3D globe.</p>
+      </div>
+
+      <div class="tabs showcase-tabs" role="tablist" aria-label="Jervis window screens" data-tabs>
+        <button class="tab" role="tab" type="button" id="tab-chat" aria-selected="true" aria-controls="panel-chat">Conversation</button>
+        <button class="tab" role="tab" type="button" id="tab-graph" aria-selected="false" aria-controls="panel-graph" tabindex="-1">Graphs</button>
+        <button class="tab" role="tab" type="button" id="tab-globe" aria-selected="false" aria-controls="panel-globe" tabindex="-1">Globe</button>
+      </div>
+
+      <div class="shot-frame">
+        <figure class="shot" role="tabpanel" id="panel-chat" aria-labelledby="tab-chat">
+          <img src="assets/img/jervis-chat-1600.webp"
+               srcset="assets/img/jervis-chat-960.webp 960w, assets/img/jervis-chat-1600.webp 1600w, assets/img/jervis-chat-2400.webp 2400w"
+               sizes="(min-width: 1280px) 1200px, 94vw" width="1600" height="1000" fetchpriority="high"
+               alt="The Jervis window. System, weather and suggested commands on the left; the voice core in the middle, set to Listening; on the right, a quadratic equation solved step by step and facts about Saturn." />
+          <figcaption>
+            <q>Tell me about Saturn</q>
+            <span>Replies land in the conversation as he speaks, with facts and worked math laid out to read.</span>
+            <a class="shot-full" href="assets/img/jervis-chat-2400.webp">Full size<svg class="icon" aria-hidden="true"><use href="#i-arrows-out"/></svg></a>
+          </figcaption>
+        </figure>
+        <figure class="shot" role="tabpanel" id="panel-graph" aria-labelledby="tab-graph" hidden>
+          <img src="assets/img/jervis-graph-1600.webp"
+               srcset="assets/img/jervis-graph-960.webp 960w, assets/img/jervis-graph-1600.webp 1600w, assets/img/jervis-graph-2400.webp 2400w"
+               sizes="(min-width: 1280px) 1200px, 94vw" width="1600" height="1000" loading="lazy"
+               alt="A graph of y equals sine of x over x in the Jervis window, with its x-intercepts, local maxima and minima and the horizontal asymptote y equals 0 labelled." />
+          <figcaption>
+            <q>Graph sine of x over x</q>
+            <span>Any function of x, with its intercepts, highs and lows and asymptotes marked. In the app, point at the curve to read any value.</span>
+            <a class="shot-full" href="assets/img/jervis-graph-2400.webp">Full size<svg class="icon" aria-hidden="true"><use href="#i-arrows-out"/></svg></a>
+          </figcaption>
+        </figure>
+        <figure class="shot" role="tabpanel" id="panel-globe" aria-labelledby="tab-globe" hidden>
+          <img src="assets/img/jervis-globe-1600.webp"
+               srcset="assets/img/jervis-globe-960.webp 960w, assets/img/jervis-globe-1600.webp 1600w, assets/img/jervis-globe-2400.webp 2400w"
+               sizes="(min-width: 1280px) 1200px, 94vw" width="1600" height="1000" loading="lazy"
+               alt="A 3D Earth in the Jervis window with a glowing arc from New York to Tel Aviv, labelled 9,115 km, 5,664 miles, heading 54.1 degrees." />
+          <figcaption>
+            <q>What is the distance between New York and Tel Aviv</q>
+            <span>The straight-line route on a 3D Earth with clouds and a day and night line. In the app you can turn it and zoom in.</span>
+            <a class="shot-full" href="assets/img/jervis-globe-2400.webp">Full size<svg class="icon" aria-hidden="true"><use href="#i-arrows-out"/></svg></a>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="fineprint">Real screenshots of the Jervis window.</p>
+    </div>
+  </section>
+
+  <!-- ============ Features ============ -->
+  <section class="section features" id="features" aria-labelledby="featuresTitle">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="featuresTitle">What you can ask for</h2>
+        <p>Everything below works by voice, or typed into the box under the core.</p>
+      </div>
+
+      <div class="bento">
+        <article class="cell cell-media">
+          <h3>Music, shows and videos</h3>
+          <p>Play a song or video on YouTube, start an exact Netflix episode, open a show in Stremio, or control Spotify. Pause, skip and jump to a minute.</p>
+          <ul class="says" aria-label="Things to say">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Play Breaking Bad season 3 episode 2 on Netflix</q></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Stop the song</q></li>
+          </ul>
+          <p class="note">Spotify control needs Spotify Premium and your own app keys.</p>
+        </article>
+
+        <article class="cell cell-math cell-has-media">
+          <div class="cell-body">
+            <h3>Math with the working shown</h3>
+            <p>Linear and quadratic equations are solved by Jervis’s own code, with exact answers and every step. Any function of x becomes a graph.</p>
+            <ul class="says" aria-label="Things to say"><li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Solve x squared minus 5x plus 6 equals 0</q></li></ul>
+          </div>
+          <img class="cell-media-img" src="assets/img/jervis-worksheet-560.webp" srcset="assets/img/jervis-worksheet-560.webp 560w, assets/img/jervis-worksheet-1000.webp 1000w" sizes="(min-width: 961px) 480px, 94vw" width="560" height="498" loading="lazy"
+               alt="Jervis’s worked answer: the discriminant, the quadratic formula, then the answer, x equals 2 or x equals 3." />
+        </article>
+
+        <article class="cell cell-space cell-has-media">
+          <div class="cell-body">
+            <h3>A globe and the planets</h3>
+            <p>Ask how far apart two places are and see the route on a 3D Earth. Ask about a planet for its facts and a 3D model.</p>
+            <ul class="says" aria-label="Things to say"><li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Tell me about Saturn</q></li></ul>
+          </div>
+          <img class="cell-media-img" src="assets/img/jervis-planet-detail-800.webp" srcset="assets/img/jervis-planet-detail-800.webp 800w, assets/img/jervis-planet-detail-1280.webp 1280w" sizes="(min-width: 961px) 480px, 94vw" width="800" height="533" loading="lazy"
+               alt="Jervis’s lit 3D model of Saturn and its rings." />
+        </article>
+
+        <article class="cell cell-docs">
+          <h3>Documents, written for you</h3>
+          <p>Describe what you want and Jervis writes it in Word, Pages, TextEdit, Notes or Google Docs on a Mac, or Word, Notepad or Google Docs on Windows. Then edit it by voice.</p>
+          <ul class="says" aria-label="Things to say">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Write a story in Word</q></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Make it shorter</q></li>
+          </ul>
+        </article>
+
+        <article class="cell cell-apps">
+          <h3>Apps, tabs and volume</h3>
+          <p>Open any app or site, close tabs by name, and set the volume. Opening an app asks what you want next: “Open Netflix” asks what to watch.</p>
+          <ul class="says" aria-label="Things to say"><li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Close the Gmail tab</q></li></ul>
+        </article>
+
+        <article class="cell cell-images">
+          <h3>Pictures in, pictures out</h3>
+          <p>Attach, drop or paste an image, then ask about it: describe it, read its text, explain an error, compare two. Ask him to draw something and he creates it.</p>
+          <ul class="says" aria-label="Things to say"><li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>What does this error mean?</q></li></ul>
+          <p class="note">Drawing is free through Pollinations.ai. Editing a picture needs an OpenAI key.</p>
+        </article>
+      </div>
+
+      <div class="also">
+        <div class="also-group">
+          <h3>Around the day</h3>
+          <ul>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-timer"/></svg><div><strong>Timers and reminders</strong><span>“Set a timer for 10 minutes.” A finished timer brings the window to the front.</span></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-calendar-blank"/></svg><div><strong>Google Calendar</strong><span>Hear your next five events, or create one by voice. Needs a free Google sign-in setup.</span></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-keyboard"/></svg><div><strong>Type instead of talking</strong><span>The box under the core works like speaking, even with the microphone muted. Press /.</span></div></li>
+          </ul>
+        </div>
+        <div class="also-group">
+          <h3>School, accounts and messages</h3>
+          <ul>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-chalkboard-teacher"/></svg><div><strong>Google Classroom</strong><span>Tells you which assignments are missing. Reading works on macOS; Windows opens the page.</span></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-user-switch"/></svg><div><strong>School and personal accounts</strong><span>Opens school things in your learning Chrome profile and the rest in your personal one.</span></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-whatsapp-logo"/></svg><div><strong>WhatsApp, read-only (macOS)</strong><span>Reads unread messages aloud. It can’t send or reply, and messages never go to the AI.</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ How it works ============ -->
+  <section class="section how" id="how" aria-labelledby="howTitle">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="howTitle">How Jervis works</h2>
+        <p>A Python program on your computer does the listening and the work. The window is a separate app that shows what he is doing.</p>
+      </div>
+      <ol class="flow" data-flow>
+        <li class="flow-step">
+          <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-ear"/></svg></span>
+          <h3>Hear</h3>
+          <p>The wake phrase gets his attention. Your speech becomes text through Whisper on Groq, with Google’s free recognizer as a backup.</p>
+        </li>
+        <li class="flow-step">
+          <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-brain"/></svg></span>
+          <h3>Decide</h3>
+          <p>Commands he knows, like media, apps, timers and math, run in his own code. Anything else goes to the AI: gpt-oss-20b on Groq, or a local model.</p>
+        </li>
+        <li class="flow-step">
+          <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-hand-pointing"/></svg></span>
+          <h3>Act</h3>
+          <p>On a Mac he drives apps through Apple Events. On Windows he finds the right window and presses its shortcuts, the way you would.</p>
+        </li>
+        <li class="flow-step">
+          <span class="flow-node"><svg class="icon" aria-hidden="true"><use href="#i-chat-circle-text"/></svg></span>
+          <h3>Answer</h3>
+          <p>He replies with your system’s built-in voice, Hebrew included, and shows the answer, worksheet, graph or globe in his window.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ Privacy / local ============ -->
+  <section class="section privacy" id="privacy" aria-labelledby="privacyTitle">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="privacyTitle">What stays on your computer, and what goes online</h2>
+        <p>Jervis is not fully offline. Here is exactly where each thing is handled.</p>
+      </div>
+
+      <div class="ledger">
+        <div class="ledger-col ledger-local">
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-lock-simple"/></svg>On your computer</h3>
+          <ul>
+            <li><strong>His voice.</strong> Replies are spoken by your system’s built-in voices.</li>
+            <li><strong>Conversation logs.</strong> Saved as text files in the <code>transcripts</code> folder, one per session.</li>
+            <li><strong>Pictures.</strong> Ones you attach and ones he makes are saved in the <code>images</code> folder.</li>
+            <li><strong>WhatsApp messages.</strong> Read from WhatsApp’s local data, only spoken and shown. Never sent to the AI or written to the logs.</li>
+            <li><strong>Google Calendar sign-in.</strong> Kept in a local file, <code>.calendar_token.json</code>.</li>
+            <li><strong>The voice meter.</strong> The window measures how loud you are to animate the core. Nothing is recorded.</li>
+          </ul>
+        </div>
+        <div class="ledger-col ledger-online">
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg>Sent to online services</h3>
+          <ul>
+            <li><strong>Your speech</strong> goes to Groq (Whisper) or Google’s free recognizer to become text. This always needs the internet.</li>
+            <li><strong>Your requests</strong> go to Groq’s AI, unless you switch to a local AI.</li>
+            <li><strong>Pictures you ask about</strong> go to a Groq vision model.</li>
+            <li><strong>Image prompts</strong> go to Pollinations.ai, or to OpenAI if you add a key.</li>
+            <li><strong>Place names and weather</strong> are looked up with Open-Meteo.</li>
+            <li><strong>Spotify and Google</strong> services are contacted only when you use those features.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="controls">
+        <h3>You can change this</h3>
+        <dl>
+          <div><dt><code>LLM_BACKEND=ollama</code></dt><dd>Answers come from a local AI on your computer (Ollama). Speech recognition still runs online.</dd></div>
+          <div><dt><code>python3 run.py --local-images</code></dt><dd>Generates pictures on your own computer instead of a cloud service.</dd></div>
+          <div><dt><code>WHATSAPP_READING=off</code></dt><dd>Turns off WhatsApp reading completely.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Requirements ============ -->
+  <section class="section requirements" id="requirements" aria-labelledby="reqTitle">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="reqTitle">What you need</h2>
+        <p>Check these before you download. Most are one-time installs.</p>
+      </div>
+      <div class="req-grid">
+        <div class="req-group req-common">
+          <h3>On every computer</h3>
+          <ul>
+            <li><strong>Python 3.11 or 3.12.</strong> Newer versions may lack prebuilt audio packages on Windows.</li>
+            <li><strong>Node.js (LTS)</strong> for the window. Without it, Jervis still works by voice.</li>
+            <li><strong>A free Groq API key</strong> from <a href="https://console.groq.com" rel="noopener">console.groq.com</a>.</li>
+            <li><strong>A microphone, speakers and an internet connection.</strong> The first start downloads his packages and about 100 MB for the window.</li>
+          </ul>
+        </div>
+        <div class="req-group">
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-apple-logo"/></svg>macOS</h3>
+          <ul>
+            <li><strong>PortAudio</strong> for the microphone, installed with <a href="https://brew.sh" rel="noopener">Homebrew</a>: <code>brew install portaudio</code></li>
+            <li><strong>Google Chrome</strong> for tab control, Classroom and account routing.</li>
+            <li><strong>Permissions</strong> when macOS asks: Microphone, Automation for Chrome, Word and Notes, and Accessibility for Google Docs and Stremio. Full Disk Access only if you want WhatsApp reading.</li>
+          </ul>
+        </div>
+        <div class="req-group">
+          <h3><svg class="icon" aria-hidden="true"><use href="#i-windows-logo"/></svg>Windows</h3>
+          <ul>
+            <li><strong>Windows 10 or 11.</strong> No special permissions.</li>
+            <li><strong>Google Chrome</strong> for Classroom and account routing. Tab control also works in Edge, Brave and Firefox.</li>
+            <li><strong>Microsoft Word</strong> for Word documents.</li>
+            <li><strong>A Hebrew voice</strong>, only if you want him to read Hebrew aloud: Settings, Time &amp; language, Speech.</li>
+          </ul>
+        </div>
+        <div class="req-group req-optional">
+          <h3>Only for optional extras</h3>
+          <ul>
+            <li><strong>Local AI:</strong> Ollama plus a model download of about 2 GB.</li>
+            <li><strong>Local pictures:</strong> a few GB for PyTorch and the model; 16 GB of RAM is the comfortable minimum.</li>
+            <li><strong>Spotify:</strong> Spotify Premium.</li>
+            <li><strong>Better pictures and editing:</strong> an OpenAI key with billing credit.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Download ============ -->
+  <section class="section download" id="download" aria-labelledby="downloadTitle">
+    <div class="container">
+      <div class="download-panel">
+        <div class="download-main">
+          <h2 id="downloadTitle">Get Jervis <span data-release="version">v43</span></h2>
+          <p>One download for macOS and Windows: the complete app as a folder. There is no installer. Once Python is installed, the launcher sets up the rest the first time you run it.</p>
+          <p class="mobile-note" hidden>Jervis runs on a Mac or a Windows PC. Send yourself this page and download it there.</p>
+          <div class="download-actions">
+            <a class="btn btn-primary btn-lg" href="downloads/Jervis-v43.zip" download data-download>
+              <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download Jervis</span>
+            </a>
+            <p class="file-meta"><span class="file-free">Free</span><span data-release="file">Jervis-v43.zip</span><span data-release="size">6.4 MB</span></p>
+          </div>
+        </div>
+        <div class="download-side">
+          <h3>Before you start</h3>
+          <ul class="checklist">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Python 3.11 or 3.12</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Node.js (LTS). The Windows launcher offers to install it.</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>A free Groq API key</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>On a Mac: Homebrew and PortAudio</li>
+          </ul>
+          <a class="text-link" href="#requirements">Everything you need, in detail</a>
+          <details class="verify">
+            <summary>Verify the download<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+            <div class="verify-body">
+              <div class="checksum">
+                <span class="checksum-label" id="shaLabel">SHA-256</span>
+                <code class="checksum-value" id="shaValue" data-release="sha256">e11b527fc5186613f05472a8ad08461dfb1485aea6d24c345702119d8e76f9a1</code>
+                <button class="copy-btn" type="button" data-copy-target="shaValue" aria-describedby="shaLabel">
+                  <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span>
+                </button>
+              </div>
+              <p>Compare it with the checksum of the file you downloaded:</p>
+              <div class="cmd-pair">
+                <span>macOS</span><div class="cmd"><code>shasum -a 256 <span data-release="file">Jervis-v43.zip</span></code></div>
+                <span>Windows</span><div class="cmd"><code>certutil -hashfile <span data-release="file">Jervis-v43.zip</span> SHA256</code></div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Install ============ -->
+  <section class="section install" id="install" aria-labelledby="installTitle">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="installTitle">Install and start Jervis</h2>
+        <p>Pick your system. Most of this happens once: after the first start, Jervis starts with one command, or a double-click on Windows.</p>
+      </div>
+
+      <div class="tabs os-tabs" role="tablist" aria-label="Operating system" data-tabs>
+        <button class="tab" role="tab" type="button" id="tab-mac" aria-selected="true" aria-controls="panel-mac" data-os="mac">
+          <svg class="icon" aria-hidden="true"><use href="#i-apple-logo"/></svg>macOS
+        </button>
+        <button class="tab" role="tab" type="button" id="tab-win" aria-selected="false" aria-controls="panel-win" data-os="win" tabindex="-1">
+          <svg class="icon" aria-hidden="true"><use href="#i-windows-logo"/></svg>Windows
+        </button>
+      </div>
+
+      <div class="install-panels">
+        <div class="install-panel" role="tabpanel" id="panel-mac" aria-labelledby="tab-mac" tabindex="0">
+          <h3 class="sr-only">Quick start on macOS</h3>
+          <ol class="steps">
+            <li>
+              <h4>Install Python and Node.js</h4>
+              <p>Python 3.11 or 3.12 from <a href="https://www.python.org/downloads/" rel="noopener">python.org</a>, and the LTS version of Node.js from <a href="https://nodejs.org" rel="noopener">nodejs.org</a>.</p>
+            </li>
+            <li>
+              <h4>Install PortAudio for the microphone</h4>
+              <p>This needs <a href="https://brew.sh" rel="noopener">Homebrew</a>. Install it first if you don’t have it.</p>
+              <div class="cmd"><code>brew install portaudio</code><button class="copy-btn" type="button" data-copy="brew install portaudio"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
+            </li>
+            <li>
+              <h4>Unzip Jervis and open the folder in Terminal</h4>
+              <p>Type <code>cd</code> and a space in Terminal, drag the Jervis folder onto the window, and press Return. If it is in Downloads:</p>
+              <div class="cmd"><code>cd ~/Downloads/Jervis</code><button class="copy-btn" type="button" data-copy="cd ~/Downloads/Jervis"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
+            </li>
+            <li>
+              <h4>Run the launcher once, then add your key</h4>
+              <p>The first run creates your settings file, <code>.env</code>, and stops. Open it, and paste a free key from <a href="https://console.groq.com" rel="noopener">console.groq.com</a> after <code>GROQ_API_KEY=</code>.</p>
+              <div class="cmd"><code>python3 run.py</code><button class="copy-btn" type="button" data-copy="python3 run.py"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
+              <div class="cmd"><code>open -e .env</code><button class="copy-btn" type="button" data-copy="open -e .env"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
+            </li>
+            <li>
+              <h4>Start Jervis</h4>
+              <p>Run the launcher again. The first start installs his packages and his window, then the window opens. Say “Hey Jervis”.</p>
+              <div class="cmd"><code>python3 run.py</code><button class="copy-btn" type="button" data-copy="python3 run.py"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
+            </li>
+          </ol>
+          <p class="panel-note">macOS asks the first time Jervis controls Chrome, Word or Notes: click Allow. For pause, resume and jump in Chrome, turn on View, Developer, Allow JavaScript from Apple Events.</p>
+        </div>
+
+        <div class="install-panel" role="tabpanel" id="panel-win" aria-labelledby="tab-win" tabindex="0" hidden>
+          <h3 class="sr-only">Quick start on Windows</h3>
+          <ol class="steps">
+            <li>
+              <h4>Install Python</h4>
+              <p>Python 3.11 or 3.12 from <a href="https://www.python.org/downloads/" rel="noopener">python.org</a>. You don’t need to install Node.js yourself: the launcher offers to.</p>
+            </li>
+            <li>
+              <h4>Unzip Jervis</h4>
+              <p>Right-click the zip file and choose Extract All.</p>
+            </li>
+            <li>
+              <h4>Double-click <code>start_jervis.bat</code></h4>
+              <p>The first run creates your settings file, <code>.env</code>, and stops.</p>
+            </li>
+            <li>
+              <h4>Add your free AI key</h4>
+              <p>Right-click <code>.env</code>, choose Open with, then Notepad. Paste a free key from <a href="https://console.groq.com" rel="noopener">console.groq.com</a> after <code>GROQ_API_KEY=</code> and save.</p>
+            </li>
+            <li>
+              <h4>Double-click <code>start_jervis.bat</code> again</h4>
+              <p>It offers to install Node.js if it’s missing, installs his packages and his window, then opens it. Say “Hey Jervis”.</p>
+            </li>
+          </ol>
+          <p class="panel-note">If the folder’s path has non-English letters, for example a Hebrew user name, Jervis copies himself to <code>C:\Jervis</code> and runs from there.</p>
+        </div>
+      </div>
+
+      <div class="install-extra">
+        <div class="advanced">
+          <h3>If something goes wrong</h3>
+          <div class="accordion">
+            <details>
+              <summary>Installing the packages failed<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body">
+                <p>On Windows, the microphone package needs Python 3.11 or 3.12; newer versions may have no ready-made build of it. On a Mac, install PortAudio and run the launcher again. Check which Python you have:</p>
+                <div class="cmd"><code>python3 --version</code><button class="copy-btn" type="button" data-copy="python3 --version"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
+              </div>
+            </details>
+            <details>
+              <summary>The window didn’t open<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body">
+                <p>The window needs Node.js. Without it Jervis still works by voice, and the launcher says so. Install the LTS version from <a href="https://nodejs.org" rel="noopener">nodejs.org</a> and run the launcher again. If the window’s download keeps failing, an antivirus, firewall or VPN is the usual cause.</p>
+              </div>
+            </details>
+            <details>
+              <summary>He says he can’t reach the AI, or used up its limit<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body">
+                <p>Some networks block <code>api.groq.com</code>, and the free tier allows a limited number of words per minute. Set up the local AI (below) and he switches to it by himself. The real reason for any failed AI call is written to <code>logs/ai_errors.log</code>.</p>
+              </div>
+            </details>
+            <details>
+              <summary>He doesn’t hear me<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body">
+                <p>On a Mac, allow the app that runs Jervis, usually Terminal, in System Settings, Privacy &amp; Security, Microphone. Check that he isn’t muted: the window shows Muted, and <kbd>M</kbd> turns the microphone back on.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="advanced">
+          <h3>Advanced setup</h3>
+          <div class="accordion">
+            <details>
+              <summary>Use a local AI (Ollama)<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body">
+                <p>Installs Ollama and downloads the llama3.2 model (about 2 GB). Jervis then switches to it by himself whenever the online AI can’t be reached.</p>
+                <div class="cmd-pair">
+                  <span>macOS</span><div class="cmd"><code>python3 run.py --local-ai</code><button class="copy-btn" type="button" data-copy="python3 run.py --local-ai"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
+                  <span>Windows</span><p>Double-click <code>setup_local_ai.bat</code>.</p>
+                </div>
+                <p>To always answer locally, set <code>LLM_BACKEND=ollama</code> in <code>.env</code>. On a slower PC, set <code>OLLAMA_MODEL=llama3.2:1b</code>.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Generate pictures on your own computer<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body">
+                <p>Installs PyTorch and Diffusers (a few GB). The model downloads the first time you ask for a picture. Jervis then prefers it, and falls back to the cloud service if it fails or takes longer than about 2 minutes.</p>
+                <div class="cmd"><code>python3 run.py --local-images</code><button class="copy-btn" type="button" data-copy="python3 run.py --local-images"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
+              </div>
+            </details>
+            <details>
+              <summary>Wake Jervis when you sign in<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body">
+                <p>Run <code>install_jervis_wake.command</code> (macOS) or <code>install_jervis_wake.bat</code> (Windows). A small listener then starts when you sign in and wakes Jervis when you say the phrase. The matching <code>uninstall_jervis_wake</code> file removes it.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Spotify, OpenAI and Google Calendar keys<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body">
+                <p>All optional, all set in <code>.env</code>. The <code>.env.example</code> file in the download explains each one step by step.</p>
+                <ul class="kv">
+                  <li><code>SPOTIFY_CLIENT_ID</code>, <code>SPOTIFY_CLIENT_SECRET</code><span>From the Spotify developer dashboard. Needs Premium.</span></li>
+                  <li><code>OPENAI_API_KEY</code><span>Better image generation, and editing existing pictures.</span></li>
+                  <li><code>GOOGLE_CALENDAR_CLIENT_ID</code>, <code>GOOGLE_CALENDAR_CLIENT_SECRET</code><span>A free desktop OAuth client from Google Cloud Console.</span></li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>School and personal Google accounts<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body">
+                <p>If each account has its own Chrome profile, name them in <code>.env</code> and Jervis opens things in the right one. Say “for school” or “personal” to settle it, or “wrong account” to fix one.</p>
+                <div class="cmd cmd-file"><code>GOOGLE_ACCOUNT_LEARNING=school account<br />GOOGLE_ACCOUNT_PERSONAL=personal account</code></div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section faq" id="faq" aria-labelledby="faqTitle">
+    <div class="container faq-inner">
+      <h2 id="faqTitle">Questions</h2>
+      <div class="accordion faq-list">
+        <details>
+          <summary>What is Jervis?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>A voice assistant for macOS and Windows. You talk to him, or type, and he plays music and shows, opens apps and sites, writes documents, sets timers, solves and graphs math, and answers questions with an AI model.</p></div>
+        </details>
+        <details>
+          <summary>Does Jervis cost anything?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>The download is free. Jervis needs a free Groq API key. The free tier limits how much you can ask per minute, and Jervis tells you when you reach it. Some optional extras cost money: OpenAI image generation needs billing credit, and Spotify control needs Premium.</p></div>
+        </details>
+        <details>
+          <summary>Which operating systems does it run on?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>macOS and Windows 10 or 11. A few features differ: reading WhatsApp and Classroom works on macOS only, and on Windows pause and resume use the media key. The “What works where” table in the included README has every difference.</p></div>
+        </details>
+        <details>
+          <summary>Is there an installer or an .exe?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>No. Jervis comes as a folder with a launcher. <code>run.py</code>, or <code>start_jervis.bat</code> on Windows, creates a private Python environment, installs what Jervis needs and starts him.</p></div>
+        </details>
+        <details>
+          <summary>Does Jervis need an internet connection?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>Yes. Speech recognition always runs online. Answers can come from a local AI instead (Ollama), which also helps on networks that block <code>api.groq.com</code>.</p></div>
+        </details>
+        <details>
+          <summary>Which AI models does it use?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>Answers: <code>openai/gpt-oss-20b</code> on Groq. Speech: <code>whisper-large-v3-turbo</code> on Groq, with Google’s free recognizer as a backup. Pictures: a Groq vision model. Local option: Ollama, with <code>llama3.2</code> by default.</p></div>
+        </details>
+        <details>
+          <summary>Where are my conversations stored?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>In plain text files in the <code>transcripts</code> folder inside the Jervis folder, one per session. WhatsApp messages are never written there. Pictures are saved in the <code>images</code> folder.</p></div>
+        </details>
+        <details>
+          <summary>Can I change the weather location?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>Not from the settings yet. The weather panel uses a fixed location, Ramat Gan, Israel, set in <code>app.py</code>.</p></div>
+        </details>
+        <details>
+          <summary>How do I update Jervis?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+          <div class="details-body"><p>Download the new version, unzip it, and copy your <code>.env</code> file from the old folder into the new one.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Close ============ -->
+  <section class="closing" aria-labelledby="closingTitle">
+    <div class="container closing-inner">
+      <h2 id="closingTitle">Say “Hey Jervis”.</h2>
+      <p>Free for macOS and Windows.</p>
+      <a class="btn btn-primary btn-lg" href="downloads/Jervis-v43.zip" download data-download>
+        <svg class="icon" aria-hidden="true"><use href="#i-download-simple"/></svg><span class="btn-label">Download Jervis</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a class="brand" href="#top" aria-label="Jervis, back to top">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="6" fill="url(#brandGrad)"/>
+          <ellipse cx="16" cy="16" rx="14" ry="6" fill="none" stroke="url(#brandGrad)" stroke-width="1.4" transform="rotate(-25 16 16)" opacity=".85"/>
+          <ellipse cx="16" cy="16" rx="14" ry="6" fill="none" stroke="url(#brandGrad)" stroke-width="1.4" transform="rotate(35 16 16)" opacity=".45"/>
+        </svg>
+        <span class="wordmark">Jervis</span>
+      </a>
+      <p>A voice assistant for macOS and Windows.</p>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="footer-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#download">Download</a></li>
+        <li><a href="#install">Install</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden>
+  <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+  <p><span id="toastText">Downloading Jervis.</span> <a href="#install" id="toastLink">See the install steps</a></p>
+  <button class="toast-close" type="button" aria-label="Dismiss"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+</div>
+
+<script src="assets/js/orb.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
