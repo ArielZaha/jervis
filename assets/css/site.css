@@ -381,6 +381,9 @@ q { quotes: '“' '”'; }
 .mobile-note { padding: 12px 14px; background: rgb(var(--accent-rgb) / .08); color: var(--text) !important; }
 .download-actions { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px 24px; margin-top: 32px; }
 .dl-option { display: grid; gap: 10px; justify-items: start; }
+.dl-alt { margin-top: 6px; color: var(--muted); font-size: 14px; max-width: 46ch; }
+.dl-option .cmd { margin-top: 0; max-width: 100%; }
+.dl-option .cmd code { white-space: normal; overflow-wrap: anywhere; }
 .verify .cmd-pair .cmd code { white-space: normal; overflow-wrap: anywhere; }
 .download-main > p.download-note { margin-top: 24px; font-size: 14px; line-height: 1.55; }
 .download-note a { color: var(--text); text-decoration: underline; text-decoration-color: rgb(var(--accent-rgb) / .5); text-underline-offset: 3px; }

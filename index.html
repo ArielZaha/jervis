@@ -33,7 +33,7 @@
     "description": "A voice assistant for Windows and macOS that plays media, opens apps, writes documents, sets timers, solves and graphs math, and can use the mouse and keyboard when asked. Its AI runs on your own computer.",
     "operatingSystem": "Windows 10, Windows 11, macOS 11 or later (Apple silicon)",
     "applicationCategory": "UtilitiesApplication",
-    "softwareVersion": "1.0.1",
+    "softwareVersion": "1.0.2",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -50,7 +50,7 @@
       }
     ],
     "url": "https://arielzaha.github.io/jervis/",
-    "downloadUrl": "https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.1",
+    "downloadUrl": "https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.2",
     "screenshot": "https://arielzaha.github.io/jervis/assets/img/jervis-chat-1600.webp"
   }
   </script>
@@ -408,24 +408,26 @@
     <div class="container">
       <div class="download-panel">
         <div class="download-main">
-          <h2 id="downloadTitle">Get Jervis <span data-release="version">1.0.1</span></h2>
+          <h2 id="downloadTitle">Get Jervis <span data-release="version">1.0.2</span></h2>
           <p>A normal installer for each system. The first time he starts, Jervis sets up his own AI and shows the progress. Everything else works while it finishes.</p>
           <p class="mobile-note" hidden>Jervis runs on a Windows PC or a Mac. Send yourself this page and download it there.</p>
           <div class="download-actions">
             <div class="dl-option" data-platform="win">
-              <a class="btn btn-primary btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.1/Jervis.Setup.exe" data-release-href="win_url" data-download>
+              <a class="btn btn-primary btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.2/Jervis.Setup.exe" data-release-href="win_url" data-download>
                 <svg class="icon" aria-hidden="true"><use href="#i-windows-logo"/></svg><span class="btn-label">Download for Windows</span>
               </a>
               <p class="file-meta"><span class="file-free">Windows 10 and 11</span><span data-release="win_file">Jervis.Setup.exe</span><span data-release="win_size">177 MB</span></p>
             </div>
             <div class="dl-option" data-platform="mac">
-              <a class="btn btn-ghost btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.1/Jervis-Mac-arm64.dmg" data-release-href="mac_url" data-download>
+              <a class="btn btn-ghost btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.2/Jervis-Mac-arm64.dmg" data-release-href="mac_url" data-download>
                 <svg class="icon" aria-hidden="true"><use href="#i-apple-logo"/></svg><span class="btn-label">Download for Mac</span>
               </a>
               <p class="file-meta"><span class="file-free">Apple silicon</span><span data-release="mac_file">Jervis-Mac-arm64.dmg</span><span data-release="mac_size">196 MB</span></p>
+              <p class="dl-alt">Easiest on a Mac: paste this into Terminal. It installs Jervis and opens him, with no security prompt.</p>
+              <div class="cmd"><code>curl -fsSL https://arielzaha.github.io/jervis/install-mac.sh | bash</code><button class="copy-btn" type="button" data-copy="curl -fsSL https://arielzaha.github.io/jervis/install-mac.sh | bash"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
             </div>
           </div>
-          <p class="download-note">Jervis isn’t signed with a paid certificate yet, so Windows and macOS warn you once, the first time. The <a href="#install">install steps</a> show what to click. <a href="https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.1" data-release-href="page">Release notes</a></p>
+          <p class="download-note">Jervis isn’t signed with a paid certificate yet, so Windows and macOS warn you once, the first time. The <a href="#install">install steps</a> show what to click. <a href="https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.2" data-release-href="page">Release notes</a></p>
         </div>
         <div class="download-side">
           <h3>Before you start</h3>
@@ -441,12 +443,12 @@
             <div class="verify-body">
               <div class="checksum">
                 <span class="checksum-label" id="shaWinLabel">Windows · SHA-256</span>
-                <code class="checksum-value" id="shaWin" data-release="win_sha256">e7c1f62a52f5b562ecd9cb62becf3b5e7d080983719ccdb598a79ef37708a1a4</code>
+                <code class="checksum-value" id="shaWin" data-release="win_sha256">d5c3e0328f558b844ad120ffdae545f9cbadbaafd56a71763bc581e4582e91ae</code>
                 <button class="copy-btn" type="button" data-copy-target="shaWin" aria-describedby="shaWinLabel"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button>
               </div>
               <div class="checksum">
                 <span class="checksum-label" id="shaMacLabel">Mac · SHA-256</span>
-                <code class="checksum-value" id="shaMac" data-release="mac_sha256">c86da3ff41dd9f1716c50d03c37f1b78d67249263925b8a517f2dfb1a53a54fb</code>
+                <code class="checksum-value" id="shaMac" data-release="mac_sha256">b9fe4bdb9f3f56290ad4b6743bf4617aab1b14720380b6151f54ff8759d0b805</code>
                 <button class="copy-btn" type="button" data-copy-target="shaMac" aria-describedby="shaMacLabel"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button>
               </div>
               <p>Compare it with the checksum of the file you downloaded:</p>
@@ -505,12 +507,9 @@
           <h3 class="sr-only">Install on macOS</h3>
           <ol class="steps">
             <li>
-              <h4>Open the .dmg and drag Jervis to Applications</h4>
-              <p>Then eject the Jervis disk in Finder.</p>
-            </li>
-            <li>
-              <h4>Open Jervis, once with an extra click</h4>
-              <p>macOS says it can’t check Jervis for malware, because he isn’t signed with a paid Apple certificate. Open System Settings, Privacy &amp; Security, scroll down and click <strong>Open Anyway</strong>. You only do this once.</p>
+              <h4>Open Terminal and paste this</h4>
+              <p>Terminal is in Applications, Utilities. The command downloads Jervis, checks it against the published checksum, puts him in Applications and opens him.</p>
+              <div class="cmd"><code>curl -fsSL https://arielzaha.github.io/jervis/install-mac.sh | bash</code><button class="copy-btn" type="button" data-copy="curl -fsSL https://arielzaha.github.io/jervis/install-mac.sh | bash"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
             </li>
             <li>
               <h4>Allow the microphone</h4>
@@ -525,6 +524,7 @@
               <p>Closing the window keeps him listening in the menu bar. Quit him from his icon there.</p>
             </li>
           </ol>
+          <p class="panel-note"><strong>Installed from the .dmg instead?</strong> Drag Jervis to Applications and open him. macOS says “Apple could not verify Jervis”, because he isn’t notarized by Apple yet: click Done, open System Settings, Privacy &amp; Security, scroll down to “Jervis was blocked”, click <strong>Open Anyway</strong> and enter your password. You only do this once.</p>
           <p class="panel-note">To let him use the mouse and keyboard, turn on Jervis in System Settings, Privacy &amp; Security, Accessibility. macOS asks the first time you want him to. For pause, resume and jump in Chrome, turn on View, Developer, Allow JavaScript from Apple Events.</p>
         </div>
       </div>
@@ -536,7 +536,13 @@
             <details>
               <summary>Windows or macOS won’t open Jervis<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
               <div class="details-body">
-                <p>The warning is about the missing paid signature. Follow the steps above: More info, then Run anyway on Windows; Open Anyway in Privacy &amp; Security on a Mac. To be sure you have the real file, compare its checksum with the one under <a href="#download">Verify the download</a>.</p>
+                <p>The warning is about the missing paid signature. On Windows: More info, then Run anyway. On a Mac, install with the Terminal command above, which avoids the prompt; or, for the .dmg, click Open Anyway in System Settings, Privacy &amp; Security. To be sure you have the real file, compare its checksum with the one under <a href="#download">Verify the download</a>.</p>
+              </div>
+            </details>
+            <details>
+              <summary>My antivirus says the file is suspicious<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body">
+                <p>Antivirus programs are careful with new programs that aren’t signed with a paid certificate yet, and Jervis is one. Avast and AVG may say they are checking a file; that takes a few hours, and then it’s let through. To be sure your copy is the real one, compare its checksum with the one under <a href="#download">Verify the download</a>. Version 1.0.2 and later no longer run the old version’s uninstaller when updating, which is what Avast stopped in 1.0.1.</p>
               </div>
             </details>
             <details>

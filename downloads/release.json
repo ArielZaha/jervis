@@ -1,17 +1,17 @@
 {
-  "version": "1.0.1",
-  "tag": "v1.0.1",
-  "page": "https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.1",
+  "version": "1.0.2",
+  "tag": "v1.0.2",
+  "page": "https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.2",
   "built": "2026-09-25",
   "site_url": "https://arielzaha.github.io/jervis/",
   "win_file": "Jervis.Setup.exe",
-  "win_url": "https://github.com/ArielZaha/jervis-app/releases/download/v1.0.1/Jervis.Setup.exe",
-  "win_bytes": 176587326,
+  "win_url": "https://github.com/ArielZaha/jervis-app/releases/download/v1.0.2/Jervis.Setup.exe",
+  "win_bytes": 176586659,
   "win_size": "177 MB",
-  "win_sha256": "e7c1f62a52f5b562ecd9cb62becf3b5e7d080983719ccdb598a79ef37708a1a4",
+  "win_sha256": "d5c3e0328f558b844ad120ffdae545f9cbadbaafd56a71763bc581e4582e91ae",
   "mac_file": "Jervis-Mac-arm64.dmg",
-  "mac_url": "https://github.com/ArielZaha/jervis-app/releases/download/v1.0.1/Jervis-Mac-arm64.dmg",
-  "mac_bytes": 196322668,
+  "mac_url": "https://github.com/ArielZaha/jervis-app/releases/download/v1.0.2/Jervis-Mac-arm64.dmg",
+  "mac_bytes": 196349262,
   "mac_size": "196 MB",
-  "mac_sha256": "c86da3ff41dd9f1716c50d03c37f1b78d67249263925b8a517f2dfb1a53a54fb"
+  "mac_sha256": "b9fe4bdb9f3f56290ad4b6743bf4617aab1b14720380b6151f54ff8759d0b805"
 }
