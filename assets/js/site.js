@@ -175,53 +175,68 @@
   });
 
   // ---------- Download ----------
-  // On a computer the links download the real zip and a note points to the next step. On a phone, where Jervis
-  // can't run, the same buttons send the page to your computer instead (the zip is still one tap away in the note).
+  // Each installer has its own button in the download section. On a computer, the one for that computer comes
+  // first and stands out, and the buttons at the top and bottom of the page download it directly (without
+  // JavaScript they lead to the download section). On a phone, where Jervis can't run, the buttons send the page
+  // to your computer instead.
   const toast = $('#toast');
   const toastText = $('#toastText');
   const toastLink = $('#toastLink');
-  const zipHref = $('[data-download]').getAttribute('href');
+  const installers = {
+    win: $('.dl-option[data-platform="win"] .btn'),
+    mac: $('.dl-option[data-platform="mac"] .btn'),
+  };
   let toastTimer = null;
   function hideToast() { toast.hidden = true; }
-  function showToast(text, linkText, linkHref, asDownload) {
+  function showToast(text, linkText, linkHref) {
     toastText.textContent = text;
     toastLink.textContent = linkText;
     toastLink.setAttribute('href', linkHref);
-    toastLink.toggleAttribute('download', Boolean(asDownload));
     toast.hidden = false;
     clearTimeout(toastTimer);
     toastTimer = setTimeout(hideToast, 12000);
   }
+  const mine = installers[os];
+  if (!isMobile && mine) {
+    const other = installers[os === 'win' ? 'mac' : 'win'];
+    mine.classList.replace('btn-ghost', 'btn-primary');
+    other.classList.replace('btn-primary', 'btn-ghost');
+    const option = mine.closest('.dl-option');
+    option.parentElement.prepend(option);
+    $$('[data-os-link]').forEach((link) => { link.setAttribute('href', mine.getAttribute('href')); });
+  }
   if (isMobile) {
-    $$('[data-download]').forEach((link) => {
+    $$('[data-os-link]').forEach((link) => {
       link.setAttribute('aria-label', 'Send Jervis to my computer');
       const label = $('.btn-label', link);
       if (label) label.textContent = 'Send to my computer';
       const use = $('use', link);
       if (use) use.setAttribute('href', '#i-paper-plane-tilt');
     });
-    $('#heroMeta').textContent = 'Jervis runs on a Mac or a Windows PC. Send yourself the link and download it there.';
+    $('#heroMeta').textContent = 'Jervis runs on a Windows PC or a Mac. Send yourself the link and download it there.';
     $$('.mobile-note').forEach((n) => { n.hidden = false; });
   }
   $$('[data-download]').forEach((link) => {
     link.addEventListener('click', async (e) => {
-      if (isMobile) {
+      if (isMobile && link.hasAttribute('data-os-link')) {
         e.preventDefault();
         const url = new URL('#download', location.href).href;
         let shared = false;
         if (navigator.share) {
-          try { await navigator.share({ title: 'Jervis', text: 'Jervis, a voice assistant for macOS and Windows', url }); shared = true; }
+          try { await navigator.share({ title: 'Jervis', text: 'Jervis, a voice assistant for Windows and macOS', url }); shared = true; }
           catch (err) { if (err && err.name === 'AbortError') return; }
         }
         const copied = shared ? false : await copyText(url);
-        showToast(shared ? 'Open the link on your Mac or PC to download Jervis.'
-          : copied ? 'Link copied. Open it on your Mac or PC to download Jervis.'
-            : 'Open this page on your Mac or PC to download Jervis.', 'Download here anyway', zipHref, true);
+        showToast(shared ? 'Open the link on your PC or Mac to download Jervis.'
+          : copied ? 'Link copied. Open it on your PC or Mac to download Jervis.'
+            : 'Open this page on your PC or Mac to download Jervis.', 'See the downloads', '#download');
         return;
       }
-      const file = link.getAttribute('href').split('/').pop();
-      showToast(`Downloading ${file}. Next, unzip it and follow the ${os === 'win' ? 'Windows' : 'macOS'} steps.`, 'See the install steps', '#install', false);
-      const tab = $(`.os-tabs [data-os="${os}"]`);
+      if (link.getAttribute('href').startsWith('#')) return;   // no JavaScript facts yet: just go to the section
+      const platform = (link.closest('[data-platform]') || {}).dataset?.platform || os;
+      showToast(platform === 'win' ? 'Downloading the Windows installer. Next, run it.'
+        : 'Downloading Jervis for Mac. Next, open it and drag Jervis to Applications.', 'See the install steps', '#install');
+      const tab = $(`.os-tabs [data-os="${platform}"]`);
       if (tab) selectTab(tab, false);
     });
   });
