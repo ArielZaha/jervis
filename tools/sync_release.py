@@ -2,6 +2,7 @@
 
     python3 website/tools/sync_release.py            # the latest release of ArielZaha/jervis-app
     python3 website/tools/sync_release.py --tag v1.0.0
+    python3 website/tools/sync_release.py --download   # also download both installers and hash them here
 
 The installers are built and tested by GitHub Actions in the app's repository and published as a GitHub release
 (they are too big for GitHub Pages). This reads that release with the GitHub CLI (`gh`), checks the published
@@ -73,11 +74,16 @@ def read_release(tag: str) -> dict:
             asset = next((a for a in data["assets"] if a["name"].endswith(ext)), None)
             if not asset:
                 sys.exit(f"Release {data['tag_name']} has no {ext} installer.")
-            # The file as it will be downloaded must match the checksum the page shows.
-            local = os.path.join(tmp, asset["name"])
+            # The file GitHub serves must match the checksum the page shows: GitHub reports the SHA-256 of what it
+            # stores; with --download (or on an older release without it) the file itself is downloaded and hashed.
             say(f"Checking {asset['name']} ({size_label(asset['size'])})…")
-            fetch(asset["browser_download_url"], local)
-            actual = sha256(local)
+            stored = (asset.get("digest") or "").removeprefix("sha256:")
+            if stored and "--download" not in sys.argv:
+                actual = stored
+            else:
+                local = os.path.join(tmp, asset["name"])
+                fetch(asset["browser_download_url"], local)
+                actual = sha256(local)
             listed = published.get(asset["name"]) or published.get(asset["name"].replace(".", " ", 1))
             if not listed:
                 sys.exit(f"{asset['name']} isn't listed in SHA256SUMS.txt.")

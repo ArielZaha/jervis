@@ -33,7 +33,7 @@
     "description": "A voice assistant for Windows and macOS that plays media, opens apps, writes documents, sets timers, solves and graphs math, and can use the mouse and keyboard when asked. Its AI runs on your own computer.",
     "operatingSystem": "Windows 10, Windows 11, macOS 11 or later (Apple silicon)",
     "applicationCategory": "UtilitiesApplication",
-    "softwareVersion": "1.0.0",
+    "softwareVersion": "1.0.1",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -50,7 +50,7 @@
       }
     ],
     "url": "https://arielzaha.github.io/jervis/",
-    "downloadUrl": "https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.0",
+    "downloadUrl": "https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.1",
     "screenshot": "https://arielzaha.github.io/jervis/assets/img/jervis-chat-1600.webp"
   }
   </script>
@@ -408,24 +408,24 @@
     <div class="container">
       <div class="download-panel">
         <div class="download-main">
-          <h2 id="downloadTitle">Get Jervis <span data-release="version">1.0.0</span></h2>
+          <h2 id="downloadTitle">Get Jervis <span data-release="version">1.0.1</span></h2>
           <p>A normal installer for each system. The first time he starts, Jervis sets up his own AI and shows the progress. Everything else works while it finishes.</p>
           <p class="mobile-note" hidden>Jervis runs on a Windows PC or a Mac. Send yourself this page and download it there.</p>
           <div class="download-actions">
             <div class="dl-option" data-platform="win">
-              <a class="btn btn-primary btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.0/Jervis.Setup.exe" data-release-href="win_url" data-download>
+              <a class="btn btn-primary btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.1/Jervis.Setup.exe" data-release-href="win_url" data-download>
                 <svg class="icon" aria-hidden="true"><use href="#i-windows-logo"/></svg><span class="btn-label">Download for Windows</span>
               </a>
-              <p class="file-meta"><span class="file-free">Windows 10 and 11</span><span data-release="win_file">Jervis.Setup.exe</span><span data-release="win_size">178 MB</span></p>
+              <p class="file-meta"><span class="file-free">Windows 10 and 11</span><span data-release="win_file">Jervis.Setup.exe</span><span data-release="win_size">177 MB</span></p>
             </div>
             <div class="dl-option" data-platform="mac">
-              <a class="btn btn-ghost btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.0/Jervis-Mac-arm64.dmg" data-release-href="mac_url" data-download>
+              <a class="btn btn-ghost btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.1/Jervis-Mac-arm64.dmg" data-release-href="mac_url" data-download>
                 <svg class="icon" aria-hidden="true"><use href="#i-apple-logo"/></svg><span class="btn-label">Download for Mac</span>
               </a>
-              <p class="file-meta"><span class="file-free">Apple silicon</span><span data-release="mac_file">Jervis-Mac-arm64.dmg</span><span data-release="mac_size">197 MB</span></p>
+              <p class="file-meta"><span class="file-free">Apple silicon</span><span data-release="mac_file">Jervis-Mac-arm64.dmg</span><span data-release="mac_size">196 MB</span></p>
             </div>
           </div>
-          <p class="download-note">Jervis isn’t signed with a paid certificate yet, so Windows and macOS warn you once, the first time. The <a href="#install">install steps</a> show what to click. <a href="https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.0" data-release-href="page">Release notes</a></p>
+          <p class="download-note">Jervis isn’t signed with a paid certificate yet, so Windows and macOS warn you once, the first time. The <a href="#install">install steps</a> show what to click. <a href="https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.1" data-release-href="page">Release notes</a></p>
         </div>
         <div class="download-side">
           <h3>Before you start</h3>
@@ -441,12 +441,12 @@
             <div class="verify-body">
               <div class="checksum">
                 <span class="checksum-label" id="shaWinLabel">Windows · SHA-256</span>
-                <code class="checksum-value" id="shaWin" data-release="win_sha256">42d3c8dbeeeb62189c19594288d596ee42e7f7c8ce4bc63510639635ca1b93e9</code>
+                <code class="checksum-value" id="shaWin" data-release="win_sha256">e7c1f62a52f5b562ecd9cb62becf3b5e7d080983719ccdb598a79ef37708a1a4</code>
                 <button class="copy-btn" type="button" data-copy-target="shaWin" aria-describedby="shaWinLabel"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button>
               </div>
               <div class="checksum">
                 <span class="checksum-label" id="shaMacLabel">Mac · SHA-256</span>
-                <code class="checksum-value" id="shaMac" data-release="mac_sha256">a114cf88e9c9cc8d517c57a1cb3608a904fa28a2f1118c2e5f77c732bca42072</code>
+                <code class="checksum-value" id="shaMac" data-release="mac_sha256">c86da3ff41dd9f1716c50d03c37f1b78d67249263925b8a517f2dfb1a53a54fb</code>
                 <button class="copy-btn" type="button" data-copy-target="shaMac" aria-describedby="shaMacLabel"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button>
               </div>
               <p>Compare it with the checksum of the file you downloaded:</p>
@@ -537,6 +537,12 @@
               <summary>Windows or macOS won’t open Jervis<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
               <div class="details-body">
                 <p>The warning is about the missing paid signature. Follow the steps above: More info, then Run anyway on Windows; Open Anyway in Privacy &amp; Security on a Mac. To be sure you have the real file, compare its checksum with the one under <a href="#download">Verify the download</a>.</p>
+              </div>
+            </details>
+            <details>
+              <summary>The installer says “Jervis cannot be closed”<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <div class="details-body">
+                <p>An older copy of Jervis was still running. Version 1.0.1 and later close him by themselves. With an older installer, right-click his icon in the notification area and choose <strong>Quit Jervis</strong>, or end <strong>Jervis</strong> and <strong>jervis-backend</strong> in Task Manager, then click <strong>Retry</strong>.</p>
               </div>
             </details>
             <details>
