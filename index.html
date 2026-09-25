@@ -33,7 +33,7 @@
     "description": "A voice assistant for Windows and macOS that plays media, opens apps, writes documents, sets timers, solves and graphs math, and can use the mouse and keyboard when asked. Its AI runs on your own computer.",
     "operatingSystem": "Windows 10, Windows 11, macOS 11 or later (Apple silicon)",
     "applicationCategory": "UtilitiesApplication",
-    "softwareVersion": "1.0.2",
+    "softwareVersion": "1.0.3",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -50,7 +50,7 @@
       }
     ],
     "url": "https://arielzaha.github.io/jervis/",
-    "downloadUrl": "https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.2",
+    "downloadUrl": "https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.3",
     "screenshot": "https://arielzaha.github.io/jervis/assets/img/jervis-chat-1600.webp"
   }
   </script>
@@ -213,7 +213,7 @@
             <li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Play Breaking Bad season 3 episode 2 on Netflix</q></li>
             <li><svg class="icon" aria-hidden="true"><use href="#i-microphone"/></svg><q>Stop the song</q></li>
           </ul>
-          <p class="note">Spotify control needs Spotify Premium and your own app keys.</p>
+          <p class="note">Spotify works with the Spotify app installed and signed in, free or Premium. No keys needed.</p>
         </article>
 
         <article class="cell cell-math cell-has-media">
@@ -395,7 +395,7 @@
           <h3>Only for optional extras</h3>
           <ul>
             <li><strong>Faster answers:</strong> a free Groq key, pasted into Settings.</li>
-            <li><strong>Spotify control:</strong> Spotify Premium.</li>
+            <li><strong>Spotify:</strong> the Spotify app, signed in (free or Premium).</li>
             <li><strong>Better pictures and editing:</strong> an OpenAI key with billing credit.</li>
           </ul>
         </div>
@@ -408,18 +408,18 @@
     <div class="container">
       <div class="download-panel">
         <div class="download-main">
-          <h2 id="downloadTitle">Get Jervis <span data-release="version">1.0.2</span></h2>
+          <h2 id="downloadTitle">Get Jervis <span data-release="version">1.0.3</span></h2>
           <p>A normal installer for each system. The first time he starts, Jervis sets up his own AI and shows the progress. Everything else works while it finishes.</p>
           <p class="mobile-note" hidden>Jervis runs on a Windows PC or a Mac. Send yourself this page and download it there.</p>
           <div class="download-actions">
             <div class="dl-option" data-platform="win">
-              <a class="btn btn-primary btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.2/Jervis.Setup.exe" data-release-href="win_url" data-download>
+              <a class="btn btn-primary btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.3/Jervis.Setup.exe" data-release-href="win_url" data-download>
                 <svg class="icon" aria-hidden="true"><use href="#i-windows-logo"/></svg><span class="btn-label">Download for Windows</span>
               </a>
               <p class="file-meta"><span class="file-free">Windows 10 and 11</span><span data-release="win_file">Jervis.Setup.exe</span><span data-release="win_size">177 MB</span></p>
             </div>
             <div class="dl-option" data-platform="mac">
-              <a class="btn btn-ghost btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.2/Jervis-Mac-arm64.dmg" data-release-href="mac_url" data-download>
+              <a class="btn btn-ghost btn-lg" href="https://github.com/ArielZaha/jervis-app/releases/download/v1.0.3/Jervis-Mac-arm64.dmg" data-release-href="mac_url" data-download>
                 <svg class="icon" aria-hidden="true"><use href="#i-apple-logo"/></svg><span class="btn-label">Download for Mac</span>
               </a>
               <p class="file-meta"><span class="file-free">Apple silicon</span><span data-release="mac_file">Jervis-Mac-arm64.dmg</span><span data-release="mac_size">196 MB</span></p>
@@ -427,7 +427,7 @@
               <div class="cmd"><code>curl -fsSL https://arielzaha.github.io/jervis/install-mac.sh | bash</code><button class="copy-btn" type="button" data-copy="curl -fsSL https://arielzaha.github.io/jervis/install-mac.sh | bash"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button></div>
             </div>
           </div>
-          <p class="download-note">Jervis isn’t signed with a paid certificate yet, so Windows and macOS warn you once, the first time. The <a href="#install">install steps</a> show what to click. <a href="https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.2" data-release-href="page">Release notes</a></p>
+          <p class="download-note">Jervis isn’t signed with a paid certificate yet, so Windows and macOS warn you once, the first time. The <a href="#install">install steps</a> show what to click. <a href="https://github.com/ArielZaha/jervis-app/releases/tag/v1.0.3" data-release-href="page">Release notes</a></p>
         </div>
         <div class="download-side">
           <h3>Before you start</h3>
@@ -443,12 +443,12 @@
             <div class="verify-body">
               <div class="checksum">
                 <span class="checksum-label" id="shaWinLabel">Windows · SHA-256</span>
-                <code class="checksum-value" id="shaWin" data-release="win_sha256">d5c3e0328f558b844ad120ffdae545f9cbadbaafd56a71763bc581e4582e91ae</code>
+                <code class="checksum-value" id="shaWin" data-release="win_sha256">0d6627c798ef41cc3f04ba0e840d98b3f9d7957ad96665531e091b965ffa00d9</code>
                 <button class="copy-btn" type="button" data-copy-target="shaWin" aria-describedby="shaWinLabel"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button>
               </div>
               <div class="checksum">
                 <span class="checksum-label" id="shaMacLabel">Mac · SHA-256</span>
-                <code class="checksum-value" id="shaMac" data-release="mac_sha256">b9fe4bdb9f3f56290ad4b6743bf4617aab1b14720380b6151f54ff8759d0b805</code>
+                <code class="checksum-value" id="shaMac" data-release="mac_sha256">6a46717fc9c538566601e746a6f50a1609f2a8a975cd7138acf5c5883bc86501</code>
                 <button class="copy-btn" type="button" data-copy-target="shaMac" aria-describedby="shaMacLabel"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-text">Copy</span></button>
               </div>
               <p>Compare it with the checksum of the file you downloaded:</p>
@@ -593,11 +593,11 @@
               </div>
             </details>
             <details>
-              <summary>Spotify, OpenAI and Google Calendar<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
+              <summary>OpenAI, Google Calendar and Spotify keys<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
               <div class="details-body">
                 <p>All optional, in Settings, Optional services. Turn on <strong>Show advanced settings</strong> to see the Spotify and Google fields.</p>
                 <ul class="kv">
-                  <li><code>Spotify</code><span>A client ID and secret from developer.spotify.com, with the redirect URI http://localhost:8888/callback. Needs Premium.</span></li>
+                  <li><code>Spotify</code><span>Not needed: Jervis uses the Spotify app. Keys (developer.spotify.com, redirect URI http://localhost:8888/callback, Premium) only add jumping to a minute on Windows.</span></li>
                   <li><code>OpenAI</code><span>Better image generation, and editing existing pictures.</span></li>
                   <li><code>Google Calendar</code><span>A free Desktop app OAuth client from Google Cloud Console, with the Calendar API turned on.</span></li>
                 </ul>
@@ -632,7 +632,7 @@
         </details>
         <details>
           <summary>Does Jervis cost anything?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
-          <div class="details-body"><p>No. There is no account and no key to buy: his AI runs on your computer. Some optional extras cost money: OpenAI image generation needs billing credit, and Spotify control needs Premium. A Groq key for faster answers is free.</p></div>
+          <div class="details-body"><p>No. There is no account and no key to buy: his AI runs on your computer. One optional extra costs money: OpenAI image generation needs billing credit. Spotify works with a free account, and a Groq key for faster answers is free.</p></div>
         </details>
         <details>
           <summary>Which computers does it run on?<svg class="icon" aria-hidden="true"><use href="#i-caret-down"/></svg></summary>
